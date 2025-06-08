@@ -2,7 +2,7 @@
 nixPkgs = ["python311", "gcc", "libffi", "openssl", "pkg-config"]
 
 [phases.install]
-cmds = ["pip install --upgrade pip", "pip install -r requirements.txt"]
+cmds = ["/nix/store/*-python311*/bin/pip install --upgrade pip", "/nix/store/*-python311*/bin/pip install -r requirements.txt"]
 
 [phases.start]
-cmd = "python main.py"
+cmd = "/nix/store/*-python311*/bin/python main.py"
