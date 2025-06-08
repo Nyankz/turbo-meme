@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ["python311", "gcc", "libffi", "openssl", "pkg-config"]
-
-[phases.install]
-cmds = ["/nix/store/*-python311*/bin/pip install --upgrade pip", "/nix/store/*-python311*/bin/pip install -r requirements.txt"]
-
-[phases.start]
-cmd = "/nix/store/*-python311*/bin/python main.py"
