@@ -10,6 +10,8 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 import logging
+from aiogram.types import InputFile
+
 
 # ========== CONFIG ==========
 TOKEN = "7838676161:AAHt0qJoMwcezd_b1IHKUSAWjBsI2t9qpdw"
@@ -44,12 +46,14 @@ def save_products(data):
 async def cmd_start(message: types.Message):
     kb = ReplyKeyboardMarkup(resize_keyboard=True)
     kb.add(KeyboardButton("📦 Категории"))
+
+    photo = InputFile("IMG_20250614_232103_449.jpg")  # локал сурет
+
     await message.answer_photo(
-        photo="https://i.ibb.co/SQSRHqq/renzo-welcome.jpg",
+        photo=photo,
         caption=f"Привет, {message.from_user.first_name}!\nВы попали на продажа бот РЕНЗО!\nЧто вы хотите? Выберите ниже 👇",
         reply_markup=kb
     )
-
 # ========== КАТЕГОРИИ ==========
 @dp.message_handler(text="📦 Категории")
 async def show_categories(message: types.Message):
